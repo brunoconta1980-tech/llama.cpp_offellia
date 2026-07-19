@@ -1,0 +1,264 @@
+@import 'tailwindcss';
+@source '.';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@import 'tw-animate-css';
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  
+  /* Cyberpunk Neon Palette - Light Theme */
+  --background: oklch(0.95 0.01 250);
+  --foreground: oklch(0.15 0.02 280);
+  --card: oklch(0.98 0.01 250);
+  --card-foreground: oklch(0.15 0.02 280);
+  --popover: oklch(0.98 0.01 250);
+  --popover-foreground: oklch(0.15 0.02 280);
+  
+  /* Primary - Cyan Neon */
+  --primary: oklch(0.65 0.25 195);
+  --primary-foreground: oklch(0.1 0.02 200);
+  
+  /* Secondary - Magenta Neon */
+  --secondary: oklch(0.7 0.25 330);
+  --secondary-foreground: oklch(0.15 0.02 330);
+  
+  --muted: oklch(0.9 0.02 250);
+  --muted-foreground: oklch(0.45 0.05 280);
+  
+  /* Accent - Purple Neon */
+  --accent: oklch(0.65 0.25 290);
+  --accent-foreground: oklch(0.98 0.01 290);
+  
+  --destructive: oklch(0.55 0.25 25);
+  --border: oklch(0.8 0.05 250);
+  --input: oklch(0.85 0.03 250);
+  --ring: oklch(0.65 0.25 195);
+  
+  /* Chart Colors - Neon Spectrum */
+  --chart-1: oklch(0.65 0.25 195); /* Cyan */
+  --chart-2: oklch(0.7 0.25 330); /* Magenta */
+  --chart-3: oklch(0.65 0.25 290); /* Purple */
+  --chart-4: oklch(0.75 0.2 160); /* Electric Green */
+  --chart-5: oklch(0.68 0.25 45); /* Orange Neon */
+  
+  --sidebar: oklch(0.96 0.01 250);
+  --sidebar-foreground: oklch(0.15 0.02 280);
+  --sidebar-primary: oklch(0.65 0.25 195);
+  --sidebar-primary-foreground: oklch(0.1 0.02 200);
+  --sidebar-accent: oklch(0.9 0.02 250);
+  --sidebar-accent-foreground: oklch(0.15 0.02 280);
+  --sidebar-border: oklch(0.85 0.03 250);
+  --sidebar-ring: oklch(0.65 0.25 195);
+  
+  /* Code Block - Cyberpunk Style */
+  --code-background: oklch(0.12 0.02 280);
+  --code-foreground: oklch(0.85 0.05 195);
+  
+  --font-mono:
+    ui-monospace, SFMono-Regular, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas,
+    'Liberation Mono', Menlo, monospace;
+  
+  --layer-popover: 1000000;
+  --chat-form-area-height: 8rem;
+  --chat-form-area-offset: 2rem;
+  --chat-form-padding-top: 6rem;
+  --max-message-height: max(24rem, min(80dvh, calc(100dvh - var(--chat-form-area-height) - 12rem)));
+}
+
+@media (min-width: 640px) {
+  :root {
+    --chat-form-area-height: 24rem;
+    --chat-form-area-offset: 12rem;
+    --chat-form-padding-top: 6rem;
+  }
+}
+
+.dark {
+  /* Cyberpunk Neon Palette - Dark Theme (Principal) */
+  --background: oklch(0.12 0.03 280);
+  --foreground: oklch(0.95 0.01 250);
+  
+  --card: oklch(0.15 0.03 280);
+  --card-foreground: oklch(0.95 0.01 250);
+  
+  --popover: oklch(0.15 0.03 280);
+  --popover-foreground: oklch(0.95 0.01 250);
+  
+  /* Primary - Bright Cyan Neon (#00FFFF equivalent) */
+  --primary: oklch(0.75 0.28 195);
+  --primary-foreground: oklch(0.1 0.02 200);
+  
+  /* Secondary - Hot Magenta Neon (#FF00FF equivalent) */
+  --secondary: oklch(0.7 0.28 330);
+  --secondary-foreground: oklch(0.12 0.02 330);
+  
+  --muted: oklch(0.25 0.03 280);
+  --muted-foreground: oklch(0.65 0.05 250);
+  
+  /* Accent - Electric Purple (#9D00FF equivalent) */
+  --accent: oklch(0.65 0.28 290);
+  --accent-foreground: oklch(0.98 0.01 290);
+  
+  --destructive: oklch(0.6 0.28 25);
+  
+  /* Borders with neon tint */
+  --border: oklch(0.35 0.08 280);
+  --input: oklch(0.2 0.03 280);
+  --ring: oklch(0.75 0.28 195);
+  
+  /* Chart Colors - Full Neon Spectrum */
+  --chart-1: oklch(0.75 0.28 195); /* Cyan Neon */
+  --chart-2: oklch(0.7 0.28 330); /* Magenta Neon */
+  --chart-3: oklch(0.65 0.28 290); /* Purple Neon */
+  --chart-4: oklch(0.75 0.25 160); /* Electric Lime */
+  --chart-5: oklch(0.72 0.28 45); /* Orange Neon */
+  
+  /* Sidebar - Dark with neon accents */
+  --sidebar: oklch(0.1 0.03 280);
+  --sidebar-foreground: oklch(0.95 0.01 250);
+  --sidebar-primary: oklch(0.75 0.28 195);
+  --sidebar-primary-foreground: oklch(0.1 0.02 200);
+  --sidebar-accent: oklch(0.2 0.05 290);
+  --sidebar-accent-foreground: oklch(0.95 0.01 290);
+  --sidebar-border: oklch(0.25 0.05 280);
+  --sidebar-ring: oklch(0.75 0.28 195);
+  
+  /* Code Block - Dark with cyan text */
+  --code-background: oklch(0.1 0.02 280);
+  --code-foreground: oklch(0.85 0.1 195);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+  }
+  
+  /* Global scrollbar styling - visible only on hover */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+  *:hover {
+    scrollbar-color: oklch(0.7 0.25 195) transparent;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+  
+  *:hover::-webkit-scrollbar-thumb {
+    background: oklch(0.7 0.25 195);
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.75 0.28 195);
+  }
+  
+  :where(code, pre, kbd, samp) {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Neon Glow Effects */
+  .neon-cyan {
+    box-shadow: 0 0 5px oklch(0.75 0.28 195),
+                0 0 10px oklch(0.75 0.28 195),
+                0 0 20px oklch(0.75 0.28 195);
+  }
+  
+  .neon-magenta {
+    box-shadow: 0 0 5px oklch(0.7 0.28 330),
+                0 0 10px oklch(0.7 0.28 330),
+                0 0 20px oklch(0.7 0.28 330);
+  }
+  
+  .neon-purple {
+    box-shadow: 0 0 5px oklch(0.65 0.28 290),
+                0 0 10px oklch(0.65 0.28 290),
+                0 0 20px oklch(0.65 0.28 290);
+  }
+  
+  .text-glow-cyan {
+    text-shadow: 0 0 10px oklch(0.75 0.28 195),
+                 0 0 20px oklch(0.75 0.28 195);
+  }
+  
+  .text-glow-magenta {
+    text-shadow: 0 0 10px oklch(0.7 0.28 330),
+                 0 0 20px oklch(0.7 0.28 330);
+  }
+}
+
+.mermaidTooltip {
+  display: none !important;
+}
